@@ -1,4 +1,4 @@
-export const SearchIcon = (props: any) => (
+export const SuggestIcon = (props: any) => (
   <svg
     aria-hidden='true'
     fill='none'

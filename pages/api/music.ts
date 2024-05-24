@@ -8,15 +8,14 @@ export default async function handler(
     res.status(405).send({ message: 'Only POST requests allowed' });
     return;
   }
-  console.log(`api:${req.body.suggest}:`);
-  const suggestions = await fetch('http://localhost:3001/suggestion/', {
+  const music = await fetch('http://localhost:3001/music/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ suggest: req.body.suggest }),
+    body: JSON.stringify({ music: req.body.music }),
   }).then((res) => {
     return res.json();
   });
-  return res.status(200).send(suggestions);
+  return res.status(200).send(music);
 }
