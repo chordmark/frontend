@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { Providers } from './providers';
+import { NextUIProvider } from '@nextui-org/react';
+import { AuthContextProvider } from '@/components/context/AuthContext';
 import './globals.css';
 import Nav from '@/components/Nav';
+import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -40,11 +42,14 @@ export default function RootLayout({
         />
         <link rel='manifest' href='/site.webmanifest' />
       </head>
-      <body className={inter.className}>
-        <Providers>
-          <Nav />
-          <main className='flex flex-col items-center'>{children}</main>
-        </Providers>
+      <body className={`${inter.className} flex flex-col`}>
+        <NextUIProvider>
+          <AuthContextProvider>
+            <Nav />
+            <main className='flex flex-col items-center'>{children}</main>
+            <Footer />
+          </AuthContextProvider>
+        </NextUIProvider>
       </body>
     </html>
   );

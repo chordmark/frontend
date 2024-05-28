@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Navbar,
   NavbarBrand,
@@ -8,8 +10,12 @@ import { Button } from '@nextui-org/button';
 
 import Image from 'next/image.js';
 import Link from 'next/link';
+import { useContext } from 'react';
+import { AuthContext } from '@/components/context/AuthContext';
 
 export default function Nav() {
+  const { user, logout, isLoading } = useContext(AuthContext);
+
   return (
     <Navbar>
       <NavbarBrand>
@@ -27,20 +33,38 @@ export default function Nav() {
       </NavbarBrand>
       <NavbarContent className='flex' justify='center'>
         <NavbarItem>
-          <Link color='foreground' href='#'>
+          <Link color='foreground' href='/lists'>
             Set Lists
           </Link>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify='end'>
-        <NavbarItem className='flex'>
-          <Link href='#'>Login</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color='primary' href='#' variant='flat'>
-            Sign Up
-          </Button>
-        </NavbarItem>
+        {!isLoading && user !== null && (
+          <NavbarItem className='flex'>
+            <Button
+              as={Button}
+              color='primary'
+              onPress={(e) => logout()}
+              variant='flat'
+            >
+              Sign Out
+            </Button>
+          </NavbarItem>
+        )}
+        {!isLoading && user === null && (
+          <>
+            <NavbarItem className='flex'>
+              <Button as={Link} color='primary' href='/signin' variant='flat'>
+                Sign In
+              </Button>
+            </NavbarItem>
+            <NavbarItem>
+              <Button as={Link} color='primary' href='/signup' variant='flat'>
+                Sign Up
+              </Button>
+            </NavbarItem>
+          </>
+        )}
       </NavbarContent>
     </Navbar>
   );

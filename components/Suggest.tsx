@@ -34,7 +34,7 @@ export default function Search() {
           listboxWrapper: 'max-h-[320px]',
           selectorButton: 'text-default-500',
         }}
-        menuTrigger='input'
+        menuTrigger='manual'
         items={suggestions}
         inputProps={{
           classNames: {
