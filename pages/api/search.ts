@@ -17,10 +17,5 @@ export default async function handler(
   }).then((res) => {
     return res.json();
   });
-  //const searchResults = await fetch(
-  //  `http://localhost:3001/search/${req.body.search}`
-  //).then((res) => {
-  //  return res.json();
-  //});
   return res.status(200).send(searchResults);
 }

@@ -2,18 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-rgb: 214, 219, 220;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-  }
-}
-
 @layer base {
   html,
   body {
@@ -22,13 +10,13 @@
   main {
     @apply h-full;
   }
+  dd {
+    @apply p-px;
+  }
+  dt {
+    @apply p-px pl-5;
+  }
 }
-
-body {
-  background-color: rgb(var(--background-rgb));
-  color: rgb(var(--foreground-rgb));
-}
-
 
 @layer utilities {
   .text-balance {

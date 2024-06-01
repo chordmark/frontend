@@ -8,7 +8,10 @@ import { Input } from '@nextui-org/input';
 
 import { AuthContext } from '@/components/context/AuthContext';
 
-import { EyeFilledIcon, EyeSlashFilledIcon } from '@/components/EyeSlash';
+import {
+  EyeFilledIcon,
+  EyeSlashFilledIcon,
+} from '@/components/icons/EyeSlashIcon';
 
 export function Login({ loginType }: { loginType: string }) {
   const { googleSignIn } = useContext(AuthContext);

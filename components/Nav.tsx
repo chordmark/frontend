@@ -28,13 +28,13 @@ export default function Nav() {
             className='rounded-lg'
             priority={true}
           />
-          <p className='font-bold text-inherit'>CHORDMARK</p>
+          <p className='ml-1 font-bold text-inherit'>CHORDMARK</p>
         </Link>
       </NavbarBrand>
       <NavbarContent className='flex' justify='center'>
         <NavbarItem>
-          <Link color='foreground' href='/lists'>
-            Set Lists
+          <Link color='foreground' href='/saved'>
+            Saved
           </Link>
         </NavbarItem>
       </NavbarContent>

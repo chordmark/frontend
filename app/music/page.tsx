@@ -1,5 +1,6 @@
 'use client';
 
+import MusicControls from '@/components/MusicControls';
 import { fetchMusic } from '@/src/fetchHelper';
 import { FetchMap } from '@/src/types';
 import { Spinner } from '@nextui-org/spinner';
@@ -26,16 +27,17 @@ export default function Music() {
     }
   }, []);
 
+  if (isLoading) {
+    return <Spinner label='Loading...' />;
+  }
+
   return (
     <>
-      {isLoading ? (
-        <Spinner label='Loading...' />
-      ) : (
-        <pre
-          className='m-10 font-mono'
-          dangerouslySetInnerHTML={{ __html: `${result}` }}
-        />
-      )}
+      <MusicControls />
+      <pre
+        className='m-5 font-mono'
+        dangerouslySetInnerHTML={{ __html: `${result}` }}
+      />
     </>
   );
 }

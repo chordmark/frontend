@@ -75,7 +75,7 @@ export default function Search() {
               className='cursor-pointer hover:bg-black/20'
               onClick={(e) => {
                 router.push(
-                  `/music?q=${encodeURI(getKeyValue(result, 'href'))}`
+                  `/music?q=${encodeURI(getKeyValue(result, 'shortId'))}`
                 );
               }}
             >

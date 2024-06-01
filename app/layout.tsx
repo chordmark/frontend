@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { NextUIProvider } from '@nextui-org/react';
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { AuthContextProvider } from '@/components/context/AuthContext';
 import './globals.css';
 import Nav from '@/components/Nav';
@@ -42,12 +43,14 @@ export default function RootLayout({
         />
         <link rel='manifest' href='/site.webmanifest' />
       </head>
-      <body className={`${inter.className} flex flex-col`}>
+      <body className={`${inter.className}`}>
         <NextUIProvider>
           <AuthContextProvider>
-            <Nav />
-            <main className='flex flex-col items-center'>{children}</main>
-            <Footer />
+            <NextThemesProvider attribute='class' defaultTheme='system'>
+              <Nav />
+              <main className='flex flex-col items-center'>{children}</main>
+              <Footer />
+            </NextThemesProvider>
           </AuthContextProvider>
         </NextUIProvider>
       </body>
